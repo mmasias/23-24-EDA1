@@ -5,10 +5,10 @@ Repo de materiales y proyectos de la asignatura **Estructura de Datos y Algoritm
 ## Curso [23][24]
 
 - [Temario](temario/README.md)
-- Evaluaciones
+- [Evaluaciones](/evaluaciones/README.md)
   - Evaluación continua: [Retos!](retos/README.md)
   - Examen parcial
-  - Proyecto final 
+  - Proyecto final
 
 ## Herramientas
 
