@@ -1,0 +1,101 @@
+@startuml
+class Alimento {
+  - contadorId: int
+  - id: int
+  - nombre: String
+  - cantidad: Double
+  - marca: String
+  ---------------------
+  + Alimento(nombre: String, cantidad: Double, marca: String)
+  + getId(): int
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getCantidad(): Double
+  + setCantidad(cantidad: Double): void
+  + getMarca(): String
+  + setMarca(marca: String): void
+  + toString(): String
+}
+
+class Encuesta {
+  - contadorId: int
+  - id: int
+  - paciente: Paciente
+  - contenido: Map<String, ArrayList<String>>
+  - fecha: Date
+  ---------------------
+  + Encuesta(paciente: Paciente, fecha: Date)
+  + getPaciente(): Paciente
+  + setPaciente(paciente: Paciente): void
+  + getContenido(): Map<String, ArrayList<String>>
+  + setContenido(contenido: Map<String, ArrayList<String>>): void
+  + getFecha(): Date
+  + setFecha(fecha: Date): void
+  + getId(): int
+  + toString(): String
+}
+
+class Aplicacion {
+  - pacientes: ArrayList<Paciente>
+  - encuestas: ArrayList<Encuesta>
+  - alimentos: ArrayList<Alimento>
+  ---------------------
+  + Aplicacion(pacientes: ArrayList<Paciente>, encuestas: ArrayList<Encuesta>, alimentos: ArrayList<Alimento>)
+  + getPacientes(): ArrayList<Paciente>
+  + setPacientes(pacientes: ArrayList<Paciente>): void
+  + getEncuestas(): ArrayList<Encuesta>
+  + setEncuestas(encuestas: ArrayList<Encuesta>): void
+  + getAlimentos(): ArrayList<Alimento>
+  + setAlimentos(alimentos: ArrayList<Alimento>): void
+  + buscaPaciente(id: int): Paciente
+  + eliminarPaciente(idPaciente: int): void
+  + listarPacientes(): void
+  + listarEncuestas(): void
+  + listarAlimentos(): void
+  + agregarPaciente(paciente: Paciente): void
+  + agregarEncuesta(encuesta: Encuesta): void
+  + agregarAlimento(alimento: Alimento): void
+  + iniciarEncuesta(): void
+  + registrarIngesta(paciente: Paciente, dia: int, tipoIngesta: int, scanner: Scanner): void
+  + listarAlimentosIngesta(alimentos: ArrayList<String>): void
+  + obtenerTipoIngestaStr(tipoIngesta: int): String
+  + agregarAlimentosAEncuesta(paciente: Paciente, dia: int, tipoIngesta: String, alimentos: ArrayList<String>): void
+  + obtenerEncuestaPorPacienteYDia(paciente: Paciente, dia: int): Encuesta
+  + crearNuevaEncuesta(paciente: Paciente, dia: int): Encuesta
+}
+
+class Main {
+  ---------------------
+  + main(args: String[]): void
+  + mostrarMenu(): void
+  + agregarPaciente(aplicacion: Aplicacion, scanner: Scanner): void
+  + agregarAlimento(aplicacion: Aplicacion, scanner: Scanner): void
+  + cargarDatosDeEjemplo(aplicacion: Aplicacion): void
+}
+
+class Paciente {
+  - contadorId: int
+  - id: int
+  - nombre: String
+  - fechaAlta: Date
+  - encuestas: ArrayList<Encuesta>
+  ---------------------
+  + Paciente(nombre: String, fechaAlta: Date)
+  + getId(): int
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getFechaAlta(): Date
+  + setFechaAlta(fechaAlta: Date): void
+  + getEncuestas(): ArrayList<Encuesta>
+  + setEncuestas(encuestas: ArrayList<Encuesta>): void
+  + toString(): String
+}
+
+Alimento -- Encuesta: contiene
+Encuesta -- Paciente: asociada a
+Aplicacion -- Paciente: contiene
+Aplicacion -- Encuesta: contiene
+Aplicacion -- Alimento: contiene
+Main -- Aplicacion: utiliza
+Main -- Scanner: utiliza
+@enduml
