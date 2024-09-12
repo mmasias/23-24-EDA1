@@ -29,7 +29,7 @@ class Tema001 {
 
         String cadenaTexto = "Una cadena";
         String otraCadena = cadenaTexto;
-        String terceraCadena = new String("Una cadena");
+        String terceraCadena = "Una cadena";
 
         System.out.println(cadenaTexto + " - " + otraCadena + " - " + terceraCadena);
         System.out.println(cadenaTexto == otraCadena);

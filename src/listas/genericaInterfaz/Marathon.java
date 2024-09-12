@@ -1,7 +1,7 @@
 package listas.genericaInterfaz;
 
 public class Marathon {
-    private List<Participant> participants;
+    private final List<Participant> participants;
 
     public Marathon() {
         participants = new List<Participant>();
