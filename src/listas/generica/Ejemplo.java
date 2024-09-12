@@ -35,5 +35,4 @@ public class Ejemplo {
         }
         System.out.println("-".repeat(25));
     }
-
 }
