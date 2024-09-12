@@ -1,0 +1,39 @@
+@startuml
+class Alimento {
+  - nombre: String
+  + Alimento(nombre: String)
+}
+
+class Ingesta {
+  - alimentos: List<Alimento>
+  + Ingesta()
+  + agregarAlimento(nombre: String): void
+}
+
+class Dia {
+  - ingestas: Map<String, Ingesta>
+  + Dia()
+  + agregarIngesta(tipo: String, ingesta: Ingesta): void
+}
+
+class Encuesta {
+  - dias: Map<Integer, Dia>
+  + Encuesta()
+  + agregarDia(numero: Integer, dia: Dia): void
+}
+
+class Paciente {
+  - nombre: String
+  - encuestas: Map<String, Encuesta>
+  + Paciente(nombre: String)
+  + agregarEncuesta(fecha: String, encuesta: Encuesta): void
+}
+
+class SistemaEncuestasView {
+  + mostrarDatosAlmacenados(paciente: Paciente): void
+}
+
+class SistemaEncuestasController {
+  + main(args: String[]): void
+}
+@enduml
