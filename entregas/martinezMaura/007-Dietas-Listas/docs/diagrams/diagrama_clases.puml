@@ -1,0 +1,38 @@
+@startuml
+class Main {
+  +main(args: String[]): void
+}
+
+class Alimento {
+  -nombre: String
+  +Alimento(nombre: String)
+}
+
+class Ingesta {
+  -tipo: String
+  -alimentos: List<Alimento>
+  +Ingesta(tipo: String)
+  +agregarAlimento(nombre: String): void
+}
+
+class Dia {
+  -numeroDia: int
+  -ingestas: List<Ingesta>
+  +Dia(numeroDia: int)
+  +agregarIngesta(tipo: String): Ingesta
+}
+
+class EncuestaNutricional {
+  -nombrePaciente: String
+  -diasEncuestados: List<Dia>
+  +EncuestaNutricional(nombrePaciente: String)
+  +agregarDia(numeroDia: int): void
+  +registrarAlimento(numeroDia: int, tipoIngesta: String, nombreAlimento: String): void
+  +mostrarEncuesta(): void
+}
+
+Main --> EncuestaNutricional
+EncuestaNutricional "1" --> "0..5" Dia
+Dia "1" --> "0..*" Ingesta
+Ingesta "1" --> "0..*" Alimento
+@enduml
