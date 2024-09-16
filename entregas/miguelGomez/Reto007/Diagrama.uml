@@ -1,0 +1,47 @@
+@startuml
+
+class Encuesta {
+  - paciente: String
+  - fechaToma: String
+  - dias: List<Dia>
+
+  + Encuesta(paciente: String, fechaToma: String)
+  + agregarDia(dia: Dia): void
+  + getPaciente(): String
+  + getFechaToma(): String
+  + getDias(): List<Dia>
+}
+
+class Dia {
+  - numero: int
+  - ingestas: List<Ingesta>
+
+  + Dia(numero: int)
+  - inicializarIngestas(): void
+  - obtenerTipoIngesta(numero: int): String
+  + getNumero(): int
+  + getIngestas(): List<Ingesta>
+}
+
+class Ingesta {
+  - tipo: String
+  - alimentos: List<Alimento>
+
+  + Ingesta(tipo: String)
+  + agregarAlimento(alimento: Alimento): void
+  + getTipo(): String
+  + getAlimentos(): List<Alimento>
+}
+
+class Alimento {
+  - nombre: String
+
+  + Alimento(nombre: String)
+  + getNombre(): String
+}
+
+Encuesta --* Dia
+Dia --* Ingesta
+Ingesta --* Alimento
+
+@enduml
