@@ -1,0 +1,10 @@
+Te explico por aquí la estructura de listas de mi código inicial (lo hice por listas en vez de árboles, aunque la modificación es casi nula para pasar de uno a otro): 
+
+En la clase Encuesta, la cual representa la encuesta dietetica completa, 
+tiene la información básica (el nombre del paciente y la fecha) y hallamos una lista de días,
+
+En la clase Días se apunta el número de día y a su vez se crea una lista de ingestas
+
+En la clase ingesta se crea una lista de alimentos
+
+Y alimentos solo contiene el nombre del susodicho
