@@ -14,6 +14,7 @@
 
 ## Temario++
 
+- [Breve intro a la recursividad](/temario/999-otrosTemas/recursividad.md)
 - [Programación genérica](/temario/999-otrosTemas/programacionGenerica.md)
 - [Pruebas & manejo de errores](/temario/999-otrosTemas/pruebas.md)
 - Git et al...

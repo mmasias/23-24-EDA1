@@ -1,0 +1,30 @@
+@startuml
+
+class Main{
+}
+
+class Paciente{
+    + nombre
+    + fechaAlta
+}
+
+class Encuesta{
+    - realizarEncuesta()
+    - agregarAlimento()
+}
+
+class Dia{
+    - validarNumeroDias()
+    - agregarAlimento()
+}
+
+class Alimento{
+    + nombre
+}
+
+Main -- Paciente
+Main -- Dia
+Dia -- Encuesta
+Encuesta -- Alimento
+
+@enduml
