@@ -1,0 +1,37 @@
+@startuml
+class Alimento {
+    - nombre: String
+    + getNombre(): String
+}
+
+class Comida {
+    - lista: GenericList<Alimento>
+    + añadirAlimento(alimento: Alimento): void
+    + mostrarAlimentos(): void
+}
+
+class EncuestaNutricional {
+    - comidasDelDia: GenericList<Comida>
+    + creaEncuestaNutricional(): void
+}
+
+class GenericList<T> {
+    - first: GenericNode<T>
+    + insertEnd(value: T): void
+    + getFirst(): GenericNode<T>
+    + clear(): void
+}
+
+class GenericNode<T> {
+    - value: T
+    - next: GenericNode<T>
+    + getValue(): T
+    + getNext(): GenericNode<T>
+}
+
+Alimento <-- Comida : contains
+Comida <-- EncuestaNutricional : contains
+GenericList o-- GenericNode : uses
+Comida ..> GenericList : uses
+EncuestaNutricional ..> GenericList : uses
+@enduml
