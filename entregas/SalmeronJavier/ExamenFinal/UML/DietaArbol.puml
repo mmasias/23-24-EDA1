@@ -1,0 +1,114 @@
+@startuml DietaArbol
+
+class Main {
+    +main(args: String[]): void
+}
+
+class User {
+    -name: String
+    -date: LocalDate
+    -days: DaysTree
+    +User(name: String)
+    +getName(): String
+    +getDate(): LocalDate
+    +getDay(dayName: String): DayNode
+    +registerUser(): User
+    +printAll(): void
+    +registerFood(): void
+}
+
+class UserIO {
+    -scanner: Scanner
+    +getInput(msg: String): String
+}
+
+class DayNode {
+    -day: String
+    -children: DayNode[]
+    -meals: MealsTree
+    +DayNode(day: String)
+    +getMeal(mealName: String): MealNode
+}
+
+class DaysTree {
+    -root: DayNode
+    +DaysTree(rootDay: String)
+    -initializeDaysTree(root: DayNode): void
+    +getDay(dayName: String): DayNode
+}
+
+class MealNode {
+    -meal: String
+    -children: MealNode[]
+    -food: Food
+    +MealNode(meal: String)
+    +food(): Food
+}
+
+class MealsTree {
+    -root: MealNode
+    +MealsTree(rootMeal: String)
+    -initializeMealsTree(root: MealNode): void
+    +getMeal(mealName: String): MealNode
+}
+
+class Food {
+    -food: List<String>
+    -date: LocalDate
+    +Food()
+    +addItem(item: String): void
+    +getDate(): LocalDate
+    +getItems(): List<String>
+    +clearItems(): void
+}
+
+interface IDataStructure<T> {
+    +isEmpty(): boolean
+    +size(): int
+    +listData(): Object[]
+}
+
+class List<T> {
+    -first: Node<T>
+    +insert(data: T, index: int): List<T>
+    -insertFirst(node: Node<T>): void
+    -insertLast(node: Node<T>): void
+    -insertAt(node: Node<T>, index: int): void
+    +remove(index: int): List<T>
+    -removeFirst(): void
+    -removeLast(): void
+    -removeAt(index: int): void
+    +clear(): List<T>
+    +getFirst(): Node<T>
+    +isEmpty(): boolean
+    +size(): int
+    +listData(): Object[]
+    +iterator(): Iterator<T>
+}
+
+class Node<T> {
+    -data: T
+    -next: Node<T>
+    +Node(data: T)
+    +getData(): T
+    +setData(data: T): void
+    +getNext(): Node<T>
+    +setNext(next: Node<T>): void
+    +count(): int
+}
+
+Main --> User : uses
+User --> UserIO : uses
+User --> DayNode : uses
+User --> DaysTree : contains
+DayNode --> MealsTree : contains
+DayNode --> MealNode : uses
+DaysTree --> DayNode : contains
+MealNode --> Food : uses
+MealsTree --> MealNode : contains
+Food --> List : uses
+List -up-|> IDataStructure
+List --> Node : uses
+Node --> IDataStructure
+
+@enduml
