@@ -1,5 +1,9 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
+    ],
+    "java.project.sourcePaths": [
+        "src",
+        "entregas/javierCader/reto003"
     ]
 }
