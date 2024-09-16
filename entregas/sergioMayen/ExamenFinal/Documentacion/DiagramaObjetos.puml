@@ -1,0 +1,98 @@
+@startuml
+
+object "Salon : Main" as Main {
+}
+
+object "2 Dia : Dia" as Ingesta {
+}
+
+object "Aisha : Paciente" as Paciente {
+}
+
+object "Dia 1 : Dia" as IngestaDia {
+}
+
+object "Dia 2 : Dia" as IngestaDia2 {
+}
+
+object "Desayuno : Encuesta" as EncuestaDesayuno {
+}
+
+object "Media Mañana : Encuesta" as EncuestaMedia {
+}
+
+object "Almuerzo : Encuesta" as EncuestaAlmuerzo {
+}
+
+object "Merienda : Encuesta" as EncuestaMerienda {
+}
+
+object "Cena : Encuesta" as EncuestaCena {
+}
+
+object "Leche : Alimento" as AlimentoDesayuno {
+
+}
+
+object "Leche : Alimento" as AlimentoDesayuno {
+    
+}
+
+object "Huevos : Alimento" as AlimentoDesayuno2 {
+    
+}
+
+object "Galleta : Alimento" as AlimentoMedia {
+    
+}
+
+object "Pollo : Alimento" as AlimentoAlmuerzo {
+    
+}
+
+object "Arroz : Alimento" as AlimentoAlmuerzo2 {
+    
+}
+
+object "Pan : Alimento" as AlimentoAlmuerzo3 {
+    
+}
+
+object "Manzana : Alimento" as AlimentoMerienda {
+    
+}
+
+object "Juego de Naranja : Alimento" as AlimentoMerienda2 {
+    
+}
+
+object "Frijoles : Alimento" as AlimentoCena {
+    
+}
+
+object "Licuado banana : Alimento" as AlimentoCena2 {
+    
+}
+
+Main -- Paciente
+Main -- Ingesta
+Paciente -- IngestaDia
+IngestaDia -- EncuestaDesayuno
+EncuestaDesayuno -- AlimentoDesayuno
+EncuestaDesayuno -- AlimentoDesayuno2
+IngestaDia -- EncuestaMedia
+EncuestaMedia -- AlimentoMedia
+IngestaDia -- EncuestaAlmuerzo
+EncuestaAlmuerzo -- AlimentoAlmuerzo
+EncuestaAlmuerzo -- AlimentoAlmuerzo2
+EncuestaAlmuerzo -- AlimentoAlmuerzo3
+IngestaDia -- EncuestaMerienda
+EncuestaMerienda -- AlimentoMerienda
+EncuestaMerienda -- AlimentoMerienda2
+IngestaDia -- EncuestaCena
+EncuestaCena -- AlimentoCena
+EncuestaCena -- AlimentoCena2
+
+Paciente -- IngestaDia2
+
+@enduml
