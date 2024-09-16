@@ -1,0 +1,107 @@
+@startuml
+
+package src {
+  class Alimento {
+    -nombre: String
+    -gramos: int
+    +Alimento(nombre: String, gramos: int)
+    +getNombre(): String
+    +getGramos(): int
+    +compareTo(o: Alimento): int
+    +toString(): String
+  }
+
+  class Dia {
+    -fecha: int
+    +Dia(fecha: int)
+    +getFecha(): int
+    +compareTo(o: Dia): int
+    +toString(): String
+  }
+
+  class Encuesta {
+    -fecha: LocalDate
+    +Encuesta(fecha: LocalDate)
+    +getFecha(): LocalDate
+    +setFecha(fecha: LocalDate): void
+    +toString(): String
+  }
+
+  class GenericList<T extends Comparable<T>> {
+    -first: GenericNode<T>
+    +size(): int
+    +isEmpty(): boolean
+    +insertFront(value: T): void
+    +insertEnd(value: T): void
+    +deleteFront(): void
+    +getFirst(): GenericNode<T>
+    +getLast(): GenericNode<T>
+    +listarTodo(): Object[]
+    +insertarOrdenado(value: T): void
+    +getObjeto(posicion: int): T
+    +vaciar(): void
+    +getValorPorPosicion(posicion: int): T
+  }
+
+  class GenericNode<T> {
+    -value: T
+    -next: GenericNode<T>
+    +GenericNode(value: T)
+    +getValue(): T
+    +setValue(newValue: T): void
+    +getNext(): GenericNode<T>
+    +setNext(siguiente: GenericNode<T>): void
+  }
+
+  class Gestion {
+    -pacientes: GenericList<Paciente>
+    -sc: Scanner
+    -formato: DateTimeFormatter
+    +Gestion()
+    +capturarDatos(): void
+    +mostrar(): void
+  }
+
+  enum Horario {
+    +DESAYUNO
+    +MEDIA_MAÑANA
+    +ALMUERZO
+    +MERIENDA
+    +CENA
+  }
+
+  class Ingesta {
+    -horario: Horario
+    -alimentos: GenericList<Alimento>
+    +Ingesta(horario: Horario)
+    +getHorario(): Horario
+    +insertarAlimento(alimento: Alimento): void
+    +compareTo(o: Ingesta): int
+    +getInformacion(): String
+    +vaciar(): void
+    +toString(): String
+  }
+
+  class Main {
+    +main(args: String[]): void
+  }
+
+  class Paciente {
+    -nombre: String
+    -fechaDeAlta: LocalDate
+    -encuestas: List<Encuesta>
+    -dias: List<Dia>
+    +Paciente(nombre: String, fechaDeAlta: LocalDate)
+    +getNombre(): String
+    +getFechaDeAlta(): LocalDate
+    +agregarEncuesta(encuesta: Encuesta): void
+    +agregarDia(dia: Dia): void
+    +getEncuestas(): List<Encuesta>
+    +getDias(): List<Dia>
+    +compareTo(o: Paciente): int
+    +getInformacion(): String
+    +toString(): String
+  }
+}
+
+@enduml
