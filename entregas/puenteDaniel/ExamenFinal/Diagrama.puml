@@ -1,0 +1,150 @@
+@startuml
+class Alimento {
+  - nombre: String
+  - gramos: int
+
+  + Alimento(nombre: String, gramos: int)
+  + setNombre(nombre: String): void
+  + setGramos(gramos: int): void
+  + getNombre(): String
+  + getGramos(): int
+  + toString(): String
+  + compareTo(o: Alimento): int
+}
+
+class Arbol<T extends DatosArbol> {
+  - raiz: NodoArbol<T>
+
+  + Arbol(raiz: NodoArbol<T>)
+  + getRaiz(): NodoArbol<T>
+  + setRaiz(raiz: NodoArbol<T>): void
+  + preOrden(raiz: NodoArbol<T>, nivel: String): void
+  + postOrden(raiz: NodoArbol<T>): void
+  + totalCalorias(nodo: NodoArbol<T>): int
+  + totalTipo(nodo: NodoArbol<T>, nombre: String): int
+}
+
+interface DatosArbol {
+  + getInformacion(): String
+}
+class Dia implements DatosArbol {
+  - fecha: int
+
+  + Dia(fecha: int)
+  + getFecha(): int
+  + setFecha(fecha: int): void
+  + getInformacion(): String
+  + compareTo(o: Dia): int
+}
+
+class Encuesta implements DatosArbol {
+  - fecha: LocalDate
+
+  + Encuesta(fecha: LocalDate)
+  + setFecha(fecha: LocalDate): void
+  + getFecha(): LocalDate
+  + getInformacion(): String
+}
+class GenericList<T extends Comparable<T>> {
+  - first: GenericNode<T>
+
+  + size(): int
+  + isEmpty(): boolean
+  + insertFront(value: T): void
+  + insertEnd(value: T): void
+  + deleteFront(): void
+  + getFirst(): GenericNode<T>
+  + getLast(): GenericNode<T>
+  + listarTodo(): Object[]
+  + insertarOrdenado(value: T): void
+  + getObjeto(posicion: int): T
+  + vaciar(): void
+  + getValorPorPosicion(posicion: int): T
+  + indexOf(value: T): int
+}
+
+class GenericNode<T extends Comparable<T>> {
+  - value: T
+  - next: GenericNode<T>
+
+  + GenericNode(value: T)
+  + getValue(): T
+  + setValue(value: T): void
+  + getNext(): GenericNode<T>
+  + setNext(next: GenericNode<T>): void
+}
+enum Horario {
+  DESAYUNO,
+  MEDIA_MAÑANA,
+  ALMUERZO,
+  MERIENDA,
+  CENA
+}
+class Gestion {
+  - arbol: Arbol<DatosArbol>
+  - sc: Scanner
+  - formato: DateTimeFormatter
+
+  + Gestion()
+  + insertarPaciente(): void
+  + insertarEncuesta(): void
+  + insertarDia(): void
+  + insertarIngesta(): void
+  + capturarDatos(): void
+  + mostrar(): void
+  + comprobarSiExiste(dia: int, horario: Horario): NodoArbol<DatosArbol>
+  + estadisticas(): void
+}
+class Ingesta implements DatosArbol {
+  - horario: Horario
+  - alimentos: GenericList<Alimento>
+
+  + Ingesta(horario: Horario)
+  + setHorario(nombre: String): void
+  + getHorario(): Horario
+  + insertarAlimento(alimento: Alimento): void
+  + compareTo(o: Ingesta): int
+  + getInformacion(): String
+  + vaciar(): void
+  + totalTipoI(nombreTipo: String): int
+  + totalCaloriasI(): double
+}
+class NodoArbol<T extends DatosArbol> {
+  - value: T
+  - hijos: GenericList<NodoArbol<T>>
+
+  + NodoArbol(value: T)
+  + compareTo(o: NodoArbol<T>): int
+  + getValue(): T
+  + setValue(value: T): void
+  + getHijos(): GenericList<NodoArbol<T>>
+  + setHijos(hijos: GenericList<NodoArbol<T>>): void
+  + insertarHijo(hijo: NodoArbol<T>): void
+}
+class Paciente implements DatosArbol {
+  - fechaDeAlta: LocalDate
+  - nombre: String
+
+  + Paciente(nombre: String, fechaDeAlta: LocalDate)
+  + getFechaDeAlta(): LocalDate
+  + setFechaDeAlta(fechaDeAlta: LocalDate): void
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getInformacion(): String
+}
+Alimento --> Comparable
+Dia --> Comparable
+Encuesta --> Comparable
+GenericList --> Comparable
+GenericNode --> Comparable
+Gestion --> Arbol
+Gestion --> Paciente
+Gestion --> Encuesta
+Gestion --> Dia
+Gestion --> Ingesta
+Ingesta --> Comparable
+NodoArbol --> Comparable
+Gestion --> Horario
+Ingesta --> Informacion
+Ingesta --> Horario
+@enduml
