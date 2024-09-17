@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  excel-sim-app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./src/:/app/
+    stdin_open: true
+    tty: true

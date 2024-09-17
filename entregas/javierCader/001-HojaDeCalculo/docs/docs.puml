@@ -1,0 +1,69 @@
+@startuml Excel_App
+class MainApp {
+    renderer
+    running
+    sheet
+    cursor
+    + __init__()
+}
+
+class Console {
+    + clear()
+    + get_user_input()
+    + get_cell_content_input()
+    + print_error()
+    + goodbye()
+}
+
+class Cell {
+    content
+    + __init__()
+    + format_content()
+}
+
+class CellContentEditor {
+    sheet
+    - _validate_content()
+    + __init__()
+}
+
+class Cursor {
+    max_cols
+    max_rows
+    current_pos
+    + move()
+    + get_position()
+    + __init__()
+}
+
+class Sheet {
+    sheet
+    cols
+    rows
+    + initialize_sheet()
+    + __init__()
+}
+
+class SheetRenderer {
+      sheet
+    - _print_sheet_headers()
+    - _print_row()
+    - _print_row_separator()
+    - _print_footer()
+    - _print_headers()
+    - _print_separator()
+    + print_sheet()
+    + __init__()
+}
+
+MainApp --> Sheet: has access to
+MainApp --> SheetRenderer: uses
+MainApp --> Cursor: uses
+SheetRenderer --> Console: uses
+CellContentEditor --> Console: requires
+CellContentEditor --> Sheet: is used by
+SheetRenderer --> Sheet: needs
+Sheet *--> Cell: has
+CellContentEditor --> Cell: edits
+@enduml
+
