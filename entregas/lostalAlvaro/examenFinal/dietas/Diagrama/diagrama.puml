@@ -1,0 +1,186 @@
+@startuml diagrama
+
+class Alimento {
+  - nombre: String
+  - gramos: int
+  + Alimento(nombre: String, gramos: int)
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getGramos(): int
+  + setGramos(gramos: int): void
+  + compareTo(o: Alimento): int
+}
+
+class Informacion {
+  + getDatos(nombre: String): ValoresNutricionales
+}
+
+class ValoresNutricionales {
+  - calorias: int
+  - azucar: int
+  - proteinas: int
+  - grasas: int
+  - tipo: String
+  + ValoresNutricionales(calorias: int, azucar: int, proteinas: int, grasas: int, tipo: String)
+  + getCalorias(): int
+  + setCalorias(calorias: int): void
+  + getAzucar(): int
+  + setAzucar(azucar: int): void
+  + getProteinas(): int
+  + setProteinas(proteinas: int): void
+  + getGrasas(): int
+  + setGrasas(grasas: int): void
+  + getTipo(): String
+  + setTipo(tipo: String): void
+  + compareTo(o: ValoresNutricionales): int
+}
+
+interface DatosArbol {
+  + getInformacion(): String
+}
+
+class Arbol {
+  - raiz: NodoArbol<T>
+  + Arbol(raiz: NodoArbol<T>)
+  + getRaiz(): NodoArbol<T>
+  + setRaiz(raiz: NodoArbol<T>): void
+  + preOrden(raiz: NodoArbol<T>, nivel: String): void
+  + postorden(nodo: NodoArbol<T>): void
+  + totalCaloriasEnc(nodo: NodoArbol<T>): int
+  + totalTipoEnc(nodo: NodoArbol<T>, nombre: String): int
+  + totalGrasasEnc(nodo: NodoArbol<T>): int
+  + totalProteinasEnc(nodo: NodoArbol<T>): int
+  + totalAzucarEnc(nodo: NodoArbol<T>): int
+}
+
+class NodoArbol {
+  - valor: T
+  - hijos: GenericList<NodoArbol<T>>
+  + NodoArbol(valor: T)
+  + getValor(): T
+  + setValor(valor: T): void
+  + getHijos(): GenericList<NodoArbol<T>>
+  + setHijos(hijos: GenericList<NodoArbol<T>>): void
+  + insertarHijos(hijo: NodoArbol<T>): void
+  + compareTo(o: NodoArbol<T>): int
+}
+
+class Dia {
+  - dia: int
+  + Dia(dia: int)
+  + getDia(): int
+  + setDia(dia: int): void
+  + getInformacion(): String
+}
+
+class Encuesta {
+  - fecha: LocalDate
+  + Encuesta(fecha: LocalDate)
+  + getFecha(): LocalDate
+  + setFecha(fecha: LocalDate): void
+  + getInformacion(): String
+}
+
+class Ingesta {
+  - horario: Horario
+  - alimentos: GenericList<Alimento>
+  + Ingesta(horario: Horario)
+  + getHorario(): Horario
+  + setHorario(horario: Horario): void
+  + getAlimentos(): GenericList<Alimento>
+  + insertarAlimento(alimento: Alimento): void
+  + compareTo(o: Ingesta): int
+  + getInformacion(): String
+  + vaciar(): void
+  + totalCalorias(): double
+  + totalTipo(nombreTipo: String): int
+  + totalGrasas(): int
+  + totalProteinas(): int
+  + totalAzucar(): int
+}
+
+class GenericList {
+  + size(): int
+  + isEmpty(): boolean
+  + vaciar(): void
+  + insertFront(value: T): void
+  + insertEnd(value: T): void
+  + deleteFront(): void
+  + getFirst(): GenericNode<T>
+  + getLast(): GenericNode<T>
+  + listAll(): Object[]
+  + getObjeto(posicion: int): T
+  + insertarEnOrden(value: T): void
+  + getValorPorPosicion(pos: int): T
+  + indexOf(value: T): int
+}
+
+class GenericNode {
+  - value: T
+  - next: GenericNode<T>
+  + GenericNode(value: T)
+  + getValue(): T
+  + setValue(newValue: T): void
+  + getNext(): GenericNode<T>
+  + setNext(siguiente: GenericNode<T>): void
+}
+
+class Paciente {
+  - nombre: String
+  - fecha: LocalDate
+  + Paciente(nombre: String, fecha: LocalDate)
+  + getNombre(): String
+  + setNombre(nombre: String): void
+  + getFecha(): LocalDate
+  + setFecha(fecha: LocalDate): void
+  + getInformacion(): String
+}
+
+enum Horario {
+  + DESAYUNO
+  + MEDIAMAÑANA
+  + ALMUERZO
+  + MERIENDA
+  + CENA
+}
+
+class Gestion {
+  - arbol: Arbol<DatosArbol>
+  + Gestion()
+  + insertarPaciente(): void
+  + insertarEncuesta(): void
+  + insertarDias(): void
+  + insertarIngestas(): void
+  + capturarDatos(): void
+  + mostrar(): void
+  + existeNodoIngesta(dia: int, horario: Horario): NodoArbol<DatosArbol>
+  + estadisticas(): void
+}
+
+class Main {
+  + main(String[] args): void
+}
+
+Alimento --|> Comparable
+ValoresNutricionales --|> Comparable
+NodoArbol --|> Comparable
+Ingesta --|> Comparable
+Paciente --|> Dia
+Paciente --|> Encuesta
+Dia --|> Ingesta
+Ingesta --|> Alimento
+DatosArbol <|-- Alimento
+DatosArbol <|-- ValoresNutricionales
+DatosArbol <|-- Dia
+DatosArbol <|-- Encuesta
+DatosArbol <|-- Ingesta
+DatosArbol <|-- Paciente
+Arbol --> NodoArbol
+NodoArbol --> GenericList
+Ingesta --> Horario
+GenericList --> GenericNode
+Paciente --> DatosArbol
+Gestion --> Arbol
+Informacion --> ValoresNutricionales
+
+@enduml
