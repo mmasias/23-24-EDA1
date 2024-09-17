@@ -16,3 +16,9 @@ Evaluaciones principales de la asignatura: examen parcial (25% de la nota total)
 |||
 |-|-|
 Enunciado|Entrega
+
+## Examen extraordinario
+
+|||
+|-|-|
+[Enunciado](examenExtraordinario.md)|[Entrega](https://classroom.github.com/a/MsDEUqfH)
