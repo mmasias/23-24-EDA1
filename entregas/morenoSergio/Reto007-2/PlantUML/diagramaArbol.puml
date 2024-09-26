@@ -1,0 +1,165 @@
+@startuml
+
+class Alimento {
+    - nombre: String
+    - cantidad: double
+    + Alimento(nombre: String, cantidad: double)
+    + getNombre(): String
+    + getCantidad(): double
+    + toString(): String
+}
+
+class Arbol<T> {
+    - raiz: NodoArbol<T>
+    - comparador: Comparator<T>
+    + Arbol(comparador: Comparator<T>)
+    + insertar(valor: T)
+    - insertar(nodo: NodoArbol<T>, valor: T)
+    + buscar(valor: T): T
+    - buscar(nodo: NodoArbol<T>, valor: T): T
+    + recorrerInOrden(accion: Consumer<T>)
+    - recorrerInOrden(nodo: NodoArbol<T>, accion: Consumer<T>)
+}
+
+class DatosArbol<T> {
+    - arbol: Arbol<T>
+    + DatosArbol(comparador: Comparator<T>)
+    + insertar(elemento: T)
+    + buscar(elemento: T): T
+    + recorrerInOrden(accion: Consumer<T>)
+}
+
+class Dia {
+    - numeroDia: int
+    - ingestas: DatosArbol<Ingesta>
+    + Dia(numeroDia: int)
+    + agregarIngesta(ingesta: Ingesta)
+    + buscarIngesta(tipoComida: String): Ingesta
+    + getNumeroDia(): int
+    + getIngestas(): DatosArbol<Ingesta>
+    + toString(): String
+}
+
+class Encuesta {
+    - fechaEncuesta: LocalDate
+    - horaEncuesta: LocalTime
+    - dias: DatosArbol<Dia>
+    + Encuesta(fechaEncuesta: LocalDate)
+    + setHoraEncuesta(horaEncuesta: LocalTime)
+    + getFechaEncuesta(): LocalDate
+    + getHoraEncuesta(): LocalTime
+    + agregarDia(dia: Dia)
+    + buscarDia(numeroDia: int): Dia
+    + getDias(): DatosArbol<Dia>
+    + toString(): String
+}
+
+class Evento {
+    - hora: LocalTime
+    - descripcion: String
+    + Evento(hora: LocalTime, descripcion: String)
+    + getHora(): LocalTime
+    + getDescripcion(): String
+    + setHora(hora: LocalTime)
+    + setDescripcion(descripcion: String)
+}
+
+class GenericList<T> {
+    - first: GenericNode<T>
+    + size(): int
+    + isEmpty(): boolean
+    + insertFront(value: T)
+    + insertEnd(value: T)
+    + deleteFront()
+    + getFirst(): GenericNode<T>
+    + listAll(type: Class<T>): T[]
+}
+
+class GenericNode<T> {
+    - value: T
+    - next: GenericNode<T>
+    + GenericNode(value: T)
+    + getValue(): T
+    + setValue(value: T)
+    + getNext(): GenericNode<T>
+    + setNext(next: GenericNode<T>)
+}
+
+class Gestion {
+    - pacientes: Arbol<Paciente>
+    + Gestion()
+    + iniciarInterfazUsuario()
+    - buscarOCrearPaciente(nombre: String): Paciente
+    - buscarOCrearEncuesta(paciente: Paciente, fecha: LocalDate): Encuesta
+    - buscarOCrearDia(encuesta: Encuesta, numeroDia: int): Dia
+    - manejarIngestas(scanner: Scanner, dia: Dia)
+    - tipoIngestaSegunOpcion(opcion: int): String
+    - manejarAlimentos(scanner: Scanner, ingesta: Ingesta)
+}
+
+class Horario {
+    - eventos: Arbol<Evento>
+    + Horario()
+    + agregarEvento(evento: Evento)
+    + buscarEvento(hora: LocalTime): Evento
+}
+
+class Ingesta {
+    - tipoComida: String
+    - horario: LocalTime
+    - alimentos: DatosArbol<Alimento>
+    + Ingesta(tipoComida: String, horario: LocalTime)
+    + agregarAlimento(alimento: Alimento)
+    + getTipoComida(): String
+    + getHorario(): LocalTime
+    + listarAlimentos(): String
+    + toString(): String
+}
+
+class Main {
+    + main(args: String[])
+}
+
+class NodoArbol<T> {
+    - valor: T
+    - izquierdo: NodoArbol<T>
+    - derecho: NodoArbol<T>
+    + NodoArbol(valor: T)
+    + getValor(): T
+    + setValor(valor: T)
+    + getIzquierdo(): NodoArbol<T>
+    + setIzquierdo(izquierdo: NodoArbol<T>)
+    + getDerecho(): NodoArbol<T>
+    + setDerecho(derecho: NodoArbol<T>)
+}
+
+class Paciente {
+    - nombre: String
+    - fechaAlta: LocalDate
+    - encuestas: DatosArbol<Encuesta>
+    + Paciente(nombre: String)
+    + setFechaAlta(fecha: LocalDate)
+    + getFechaAlta(): LocalDate
+    + agregarEncuesta(encuesta: Encuesta)
+    + buscarEncuesta(fecha: LocalDate): Encuesta
+    + getEncuestas(): DatosArbol<Encuesta>
+    + getNombre(): String
+    + toString(): String
+}
+
+Alimento --|> Object
+Arbol --|> Object
+DatosArbol --|> Object
+Dia --|> Object
+Encuesta --|> Object
+Evento --|> Object
+GenericList --|> Object
+GenericNode --|> Object
+Gestion --|> Object
+Horario --|> Object
+Ingesta --|> Object
+Main --|> Object
+NodoArbol --|> Object
+Paciente --|> Object
+
+@enduml
