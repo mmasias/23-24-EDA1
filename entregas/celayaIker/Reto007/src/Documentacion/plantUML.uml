@@ -1,0 +1,93 @@
+@startuml
+
+class Alimento {
+    - nombre: String
+    + Alimento(nombre: String)
+    + getNombre(): String
+}
+
+class Arbol {
+    - raiz: Nodo
+    - EncuestaNutricional: EncuestaNutricional
+    - arbol: Arbol
+    - dato: String
+    - Comida: Comida
+    - Nodo: Nodo
+    - dias: int
+    + Arbol(dato: String)
+    + Arbol()
+    + añaderama(dato: String, padre: Nodo): void
+    + ramaNodo(lista: List<String>, Nodo: Nodo): void
+    + creaRaiz(dato: String): void
+    + setDias(dia: int): int
+    + getDia(): int
+}
+
+class Comida {
+    - alimentos: String
+    - lista: List<String>
+    - arbol: Arbol
+    - EncuestaNutricional: EncuestaNutricional
+    + Comida(alimentos: String)
+    + Comida()
+    + añadirAlimento(alimento: String): void
+    + mostrarAlimentos(): void
+    + getLista(): String
+    + creaComida(): void
+    + creamedia(): void
+    + creaalmu(): void
+    + creamerienda(): void
+    + creacena(): void
+}
+
+class EncuestaNutricional {
+    - arbol: Arbol
+    - Nodo: Nodo
+    - lista: List<Nodo>
+    - Comida: Comida
+    - raiz: Nodo
+    - dia1: Nodo
+    - dia2: Nodo
+    - dia3: Nodo
+    - dia4: Nodo
+    - dia5: Nodo
+    - desa: Nodo
+    - media: Nodo
+    - almu: Nodo
+    - merienda: Nodo
+    - cena: Nodo
+    + EncuestaNutricional()
+    + añadirNodo(dato: String, padre: Nodo): void
+    + añadirNodo(Nodo: Nodo): void
+    + creaEncuestaNutricional(): void
+    + rellenadias(): void
+}
+
+class Nodo {
+    - dato: String
+    - padre: Nodo
+    - lista: List<String>
+    + Nodo(dato: String, padre: Nodo)
+    + Nodo(dato: String)
+    + Nodo(dato: List<String>, padre: Nodo)
+    + crearaiz(dato: String): void
+    + crearhijo(dato: String, padre: Nodo): void
+}
+
+EncuestaNutricional --> Arbol: Contiene
+EncuestaNutricional --> Comida: Contiene
+EncuestaNutricional --> Nodo: Contiene
+EncuestaNutricional --> Nodo: Contiene
+
+Arbol --> Nodo: Contiene
+Arbol --> EncuestaNutricional: Contiene
+Arbol --> Comida: Contiene
+Arbol --> Arbol: Contiene
+
+Comida --> Arbol: Contiene
+Comida --> EncuestaNutricional: Contiene
+
+Nodo --> Nodo: Contiene
+Comida --> Alimento: Contiene
+
+@enduml
