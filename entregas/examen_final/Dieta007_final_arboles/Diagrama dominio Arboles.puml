@@ -1,0 +1,158 @@
+@startuml
+class Menu {
+  - alimentos: ArrayList<Food>
+  - diets: ArrayList<TreeNode>
+  - posicion: int
+  - numeros: Scanner
+  - textos: Scanner
+  - opcion: int
+  - alimento: String
+  + main(String[] args): void
+  + obtenerNombreIngesta(int ingesta): String
+  + showMenu(): int
+  + showFood(): void
+  + agregarAlimentosAIngesta(): void
+  + showNames(): void
+  + findPatient(String nombre): boolean
+  + addDiet(String pacientex, int diax, int ingestax): void
+}
+
+class Estrategia {
+  - nombre: String
+  + Estrategia(String nombre): void
+  + getNombre(): String
+  + setNombre(String nombre): void
+}
+
+class Patient {
+  - name: String
+  - dischargeDate: CustomDate
+  + Patient(String name, CustomDate dischargeDate): void
+  + getName(): String
+  + setName(String name): void
+  + getDischargeDate(): CustomDate
+  + setDischargeDate(CustomDate dischargeDate): void
+  + showData(): void
+}
+
+class Intakes {
+  - name: String[]
+  - foods: List<Food>
+  + Intakes(): void
+  + getName(): String[]
+  + setName(String[] name): void
+  + getFoods(): List<Food>
+  + setFoods(List<Food> foods): void
+  + addFood(Food foodx): void
+  + newFood(): void
+  + showMenu(): void
+}
+
+class TreeNode<T> {
+  - value: T
+  - parent: TreeNode<T>
+  - childNodes: List<TreeNode<T>>
+  + TreeNode(T value): void
+  + addChild(TreeNode<T> childNode): void
+  + setParent(TreeNode<T> parent): void
+  + getParent(): TreeNode<T>
+  + getRoot(): TreeNode<T>
+  + printTree(boolean fullTree): void
+  - printTree(String prefix, boolean isTail, int childIndex, boolean fullTree): void
+  - getNameForValue(T value, int index): String
+  - getGenericName(T object): String
+  + getValue(): T
+  + getChildNodes(): List<TreeNode<T>>
+}
+
+class Food {
+  - name: String
+  - kcal: int
+  + Food(String name, int kcal): void
+  + getName(): String
+  + setName(String name): void
+  + getKcal(): int
+  + setKcal(int kcal): void
+}
+
+class Day {
+  - name: String[]
+  + Day(): void
+  + getName(): String[]
+  + setName(String[] name): void
+}
+
+class CustomDate {
+  - day: int
+  - month: int
+  - year: int
+  + CustomDate(int day, int month, int year): void
+  + getDay(): int
+  + setDay(int day): void
+  + getMonth(): int
+  + setMonth(int month): void
+  + getYear(): int
+  + setYear(int year): void
+  + showData(): void
+}
+
+class Survey {
+  - name: String
+  - actualDay: CustomDate
+  - formatter: SimpleDateFormat
+  + Survey(): void
+  + getName(): String
+  + getActualDay(): CustomDate
+  + setActualDay(CustomDate actualDay): void
+  + showData(): void
+}
+
+class Node<T> {
+  - data: T
+  - next: Node<T>
+  + Node(T data): void
+  + getData(): T
+  + setData(T data): void
+  + getNext(): Node<T>
+  + setNext(Node<T> next): void
+  + count(): int
+}
+
+class List<T> {
+  - first: Node<T>
+  + insert(T data, int index): List<T>
+  - insertFirst(Node<T> node): void
+  - insertLast(Node<T> node): void
+  - insertAt(Node<T> node, int index): void
+  + remove(int index): List<T>
+  - removeFirst(): void
+  - removeLast(): void
+  - removeAt(int index): void
+  + getFirst(): Node<T>
+  + isEmpty(): boolean
+  + size(): int
+  + listData(): Object[]
+}
+
+interface IDataStructure<T> {
+  + isEmpty(): boolean
+  + size(): int
+  + listData(): Object[]
+}
+
+Food -- Intakes : belongs to
+Day -- Menu : has
+
+Patient -- CustomDate : has
+Survey -- CustomDate : has
+
+Menu --|> Intakes
+Menu -- Patient : has
+Menu -- Survey : has
+Menu -- TreeNode : has
+Menu -- Estrategia : has
+
+Intakes o-- List : contains
+List --o Node : contains
+List --o IDataStructure : implements
+@enduml
