@@ -1,0 +1,75 @@
+@startuml
+class Alimento {
+  - nombre: String
+  + Alimento(nombre: String)
+  + getNombre(): String
+}
+
+class ArbolEncuestas {
+  - raiz: NodoEncuesta
+  + ArbolEncuestas()
+  + agregarEncuesta(encuesta: Encuesta): void
+  + getRaiz(): NodoEncuesta
+}
+
+class Dia {
+  - desayuno: Ingesta
+  - mediaManana: Ingesta
+  - almuerzo: Ingesta
+  - merienda: Ingesta
+  - cena: Ingesta
+  + Dia()
+  + getDesayuno(): Ingesta
+  + getMediaManana(): Ingesta
+  + getAlmuerzo(): Ingesta
+  + getMerienda(): Ingesta
+  + getCena(): Ingesta
+  + agregarIngesta(ingesta: Ingesta): void
+}
+
+class Encuesta {
+  - dias: List<Dia>
+  + agregarDia(dia: Dia): void
+  + getDias(): List<Dia>
+}
+
+class Ingesta {
+  - alimentos: List<Alimento>
+  + agregarAlimento(alimento: Alimento): void
+  + getAlimentos(): List<Alimento>
+}
+
+class NodoEncuesta {
+  - encuesta: Encuesta
+  - hijos: List<NodoEncuesta>
+  + NodoEncuesta(encuesta: Encuesta)
+  + getEncuesta(): Encuesta
+  + getHijos(): List<NodoEncuesta>
+  + agregarHijo(hijo: NodoEncuesta): void
+}
+class Paciente {
+  - nombre: String
+  - encuestas: List<Encuesta>
+  + Paciente(nombre: String)
+  + agregarEncuesta(encuesta: Encuesta): void
+  + getEncuestas(): List<Encuesta>
+}
+
+Paciente --> Encuesta : encuestas
+
+class SistemaEncuestas {
+  + main(args: String[]): void
+  + ingresarEncuesta(scanner: Scanner, arbolEncuestas: ArbolEncuestas, nombrePaciente: String): void
+  + obtenerNombreIngesta(numeroIngesta: int): String
+  + obtenerIngestaPorNumero(dia: Dia, numeroIngesta: int): Ingesta
+  + ingresarAlimentos(scanner: Scanner, ingesta: Ingesta): void
+  + listarAlimentos(ingesta: Ingesta): void
+}
+
+SistemaEncuestas --> ArbolEncuestas
+SistemaEncuestas --> Scanner
+SistemaEncuestas --> Encuesta
+SistemaEncuestas --> Dia
+SistemaEncuestas --> Ingesta
+SistemaEncuestas --> Alimento
+@enduml
