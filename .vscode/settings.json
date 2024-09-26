@@ -1,5 +1,10 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
-    ]
+    ],
+    "java.project.sourcePaths": [
+        "src",
+        "entregas/lopesBrenda/Reto003"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
