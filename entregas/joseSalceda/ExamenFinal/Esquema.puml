@@ -1,0 +1,30 @@
+@startuml Esquema
+
+class Paciente {
+    - String nombre
+    - List<Encuesta> encuestas
+    + String getNombre()
+    + void agregarEncuesta(Encuesta)
+    + Encuesta obtenerEncuestaPorDia(int)
+}
+
+class Encuesta {
+    - int dia
+    - Map<Integer, Ingesta> ingestas
+    + int getDia()
+    + void agregarIngesta(Ingesta)
+    + Ingesta obtenerIngesta(int)
+}
+
+class Ingesta {
+    - int tipoIngesta
+    - List<String> alimentos
+    + int getTipoIngesta()
+    + void agregarAlimento(String)
+    + void listarAlimentos()
+}
+
+Paciente "1" -- "0..*" Encuesta
+Encuesta "1" -- "0..*" Ingesta
+
+@enduml

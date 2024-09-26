@@ -1,6 +1,4 @@
-package listas.basica;
-
-class Ejemplo {
+public class Ejemplo {
     public static void main(String[] args) {
 
         List nephews = new List();
@@ -8,15 +6,15 @@ class Ejemplo {
         viewLine(nephews);
         System.out.println("Esta vacia? " + nephews.isEmpty());
 
-        nephews.insertEnd("Juanito");
-        nephews.insertEnd("Pepito");
-        nephews.insertEnd("Anita");
+        nephews.insert("Juanito");
+        nephews.insert("Pepito");
+        nephews.insert("Anita");
 
         System.out.println("Esta vacia? " + nephews.isEmpty());
 
         viewLine(nephews);
 
-        nephews.insertEnd("Luisito");
+        nephews.insert("Luisito");
 
         System.out.println("Tamaño: " + nephews.size());
 
@@ -36,4 +34,3 @@ class Ejemplo {
         System.out.println("-".repeat(25));
     }
 }
- 
