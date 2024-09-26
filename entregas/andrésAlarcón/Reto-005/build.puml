@@ -1,0 +1,113 @@
+@startuml
+
+interface CustomerInterface {
+    +getItemsLength(): int
+    +reduceItemsSize(): void
+}
+
+interface ItemsInterface {
+    +getSize(): int
+    +reduceSize(): void
+}
+
+class Customer {
+    -items: ItemsInterface
+    -next: Customer
+    +Customer()
+    +setItems(int size): void
+    +reduceItemsSize(): void
+    +getItemsLength(): int
+    +getNext(): Customer
+    +setNext(Customer next): void
+}
+
+class Items {
+    -size: int
+    +Items(int size)
+    +getSize(): int
+    +reduceSize(): void
+}
+
+interface CheckoutInterface {
+    +receiveCustomer(CustomerInterface newCustomer): void
+    +chargeItem(): void
+    +setFree(): void
+    +isEmpty(): boolean
+    +printRemainingItems(): void
+}
+
+class Checkout {
+    -actualCustomer: CustomerInterface
+    -isEmpty: boolean
+    +receiveCustomer(CustomerInterface newCustomer): void
+    +chargeItem(): void
+    +setFree(): void
+    +isEmpty(): boolean
+    +printRemainingItems(): void
+}
+
+interface QueueInterface {
+    +size(): int
+    +isEmpty(): boolean
+    +getFirst(): CustomerInterface
+    +newCustomer(CustomerInterface customer): void
+    +removeCustomer(): void
+}
+
+class Queue {
+    -first: Customer
+    -size: int
+    +size(): int
+    +isEmpty(): boolean
+    +getFirst(): Customer
+    +newCustomer(Customer customer): void
+    +removeCustomer(): void
+}
+
+interface ScheduleInterface {
+    +isOpen(): boolean
+    +clock(): void
+    +checkTime(): void
+}
+
+class Schedule {
+    -hours: int
+    -minutes: int
+    -stillOpen: boolean
+    +close(): void
+    +isOpen(): boolean
+    +clock(): void
+    +checkTime(): void
+}
+
+class CCCF {
+    -schedule: ScheduleInterface
+    -availableCheckouts: int
+    -checkouts: CheckoutInterface[]
+    -line: QueueInterface
+    +CCCF(ScheduleInterface schedule, QueueInterface line)
+    +createCheckouts(): void
+    +addCustomer(): void
+    +attendCustomer(): void
+    +printCustomerStatus(): void
+    +processItems(): void
+    +openShop(): void
+}
+
+class Main {
+    +main(String[] args): void
+}
+
+CustomerInterface <|-- Customer
+ItemsInterface <|-- Items
+CheckoutInterface <|-- Checkout
+QueueInterface <|-- Queue
+ScheduleInterface <|-- Schedule
+
+CCCF --> ScheduleInterface
+CCCF --> QueueInterface
+CCCF --> CheckoutInterface
+
+Main --> CCCF
+
+@enduml
