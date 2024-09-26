@@ -7,31 +7,40 @@ public class List {
     public int size() {
         if (this.first == null) {
             return 0;
-        } else {
-            int count = 1;
-            Node iterator = first;
-            while (iterator.getNext() != null) {
-                count++;
-                iterator = iterator.getNext();
-            }
-            return count;
         }
+        int count = 1;
+        Node iterator = first;
+        while (iterator.getNext() != null) {
+            count++;
+            iterator = iterator.getNext();
+        }
+        return count;
     }
 
     public boolean isEmpty() {
         return this.size() > 0 ? false : true;
     }
 
-    public void insert(String value) {
-        Node nodoQueEntra = new Node(value);
+    public void insertEnd(String value) {
+        Node newNode = new Node(value);
         if (this.first == null)
-            this.first = nodoQueEntra;
+        this.first = newNode;
         else {
             Node iterator = this.first;
             while (iterator.getNext() != null) {
                 iterator = iterator.getNext();
             }
-            iterator.setNext(nodoQueEntra);
+            iterator.setNext(newNode);
+        }
+    }
+    
+    public void insertFront(String value) {
+        Node n = new Node(value);
+        if (this.first == null)
+            this.first = n;
+        else {
+            n.setNext(this.first);
+            this.first = n;
         }
     }
 
