@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EDA.iml" filepath="$PROJECT_DIR$/.idea/EDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entregas/anibalBayas/reto001/hojaDeCalculo/hojaDeCalculo/hojaDeCalculo.iml" filepath="$PROJECT_DIR$/entregas/anibalBayas/reto001/hojaDeCalculo/hojaDeCalculo/hojaDeCalculo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/entregas/anibalBayas/reto001/hojaDeCalculo/hojaDeCalculo/hojaDeCalculoPoo/hojaDeCalculoPoo.iml" filepath="$PROJECT_DIR$/entregas/anibalBayas/reto001/hojaDeCalculo/hojaDeCalculo/hojaDeCalculoPoo/hojaDeCalculoPoo.iml" />
+    </modules>
+  </component>
+</project>

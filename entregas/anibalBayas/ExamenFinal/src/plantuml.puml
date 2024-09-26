@@ -1,0 +1,127 @@
+@startuml
+
+class DatosArbol {
+  +getInfo(): String
+}
+
+class Alimento {
+  -nombre: String
+  -gramos: int
+}
+
+class NodoArbol<T extends DatosArbol> {
+  -valor: T
+  -hijos: GenericList<NodoArbol<T>>
+}
+
+class Arbol<T extends DatosArbol> {
+  -raiz: NodoArbol<T>
+}
+
+class GenericList<T extends Comparable<T>> {
+  -first: GenericNode<T>
+  +size(): int
+  +isEmpty(): boolean
+  +insertFront(value: T): void
+  +insertEnd(value: T): void
+  +deleteFront(): void
+  +getFirst(): GenericNode<T>
+  +getLast(): GenericNode<T>
+  +listAll(): Object[]
+  +getObjeto(posicion: int): T
+  +insertarEnOrden(value: T): void
+  +vaciar(): void
+  +getValorPorPosicion(pos: int): T
+  +indexOf(value: T): int
+}
+
+class GenericNode<T> {
+  -value: T
+  -next: GenericNode<T>
+}
+
+class Gestion {
+  -arbol: Arbol<DatosArbol>
+}
+
+class Horario {
+  -codigo: int
+  -descripcion: String
+}
+
+class Informacion {
+  +getDatos(nombre: String): ValoresNutricionales
+}
+
+class Ingesta {
+  -horario: Horario
+  -alimentos: GenericList<Alimento>
+}
+
+class Paciente {
+  -nombre: String
+  -fechaDeAlta: Object
+}
+
+class ValoresNutricionales {
+  -calorias: int
+  -azucar: int
+  -proteinas: int
+  -grasas: int
+  -tipo: String
+}
+
+class Dia {
+  -dia: int
+}
+
+class Encuesta {
+  -fecha: Object
+}
+
+class Main{
+  -gestion: Gestion
+  }
+
+Alimento --|> Ingesta
+Alimento --|> Gestion
+
+Arbol --|> Gestion
+
+DatosArbol--|>Arbol
+DatosArbol--|>Dia
+DatosArbol--|>Encuesta
+DatosArbol--|>Gestion
+DatosArbol--|>Ingesta
+DatosArbol--|>NodoArbol
+DatosArbol--|>Paciente
+
+Dia --|> Gestion
+
+Encuesta --|> Gestion
+
+GenericList --|> Gestion
+GenericList--|>Informacion
+GenericList--|>Ingesta
+GenericList--|> NodoArbol
+
+GenericNode --|>GenericList
+
+Gestion--|> Main
+
+Horario --|>Gestion
+Horario --|>Ingesta
+
+Informacion--|> Ingesta
+
+Ingesta --|> Arbol
+Ingesta --|> Gestion
+
+NodoArbol --|>Arbol
+NodoArbol --|>Gestion
+
+Paciente --|> Gestion
+
+ValoresNutricionales --|> Informacion
+
+@enduml
