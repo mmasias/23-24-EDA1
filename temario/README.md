@@ -8,7 +8,7 @@
 - [Listas](002-listas/README.md)
   - Pilas
   - Colas
-- Árboles
+- [Árboles](005-arboles/README.md)
 - Grafos
 - Ficheros
 
