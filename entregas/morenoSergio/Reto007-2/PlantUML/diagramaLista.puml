@@ -1,0 +1,50 @@
+@startuml
+
+class Main {
+    +main(String[] args)
+}
+
+class Alimento {
+    -nombre: String
+    +Alimento(String nombre)
+}
+
+class Dia {
+    -numeroDia: int
+    -ingestas: List<Ingesta>
+    +Dia(int numeroDia)
+    +agregarIngesta(String tipo): Ingesta
+}
+
+class EncuestaNutricional {
+    -nombrePaciente: String
+    -diasEncuestados: List<Dia>
+    +EncuestaNutricional(String nombrePaciente)
+    +agregarDia(int numeroDia): void
+    +registrarAlimento(int numeroDia, String tipoIngesta, String nombreAlimento): void
+    +mostrarEncuesta(LocalDate fechaAlta, LocalDate fechaEncuesta): void
+}
+
+class Fechas {
+    +obtenerFecha(String mensaje): LocalDate
+}
+
+class ImprimirFechas {
+    +imprimirFechas(LocalDate fechaAlta, LocalDate fechaEncuesta): void
+}
+
+class Ingesta {
+    -tipo: String
+    -alimentos: List<Alimento>
+    +Ingesta(String tipo)
+    +agregarAlimento(String nombre): void
+}
+
+Main --> EncuestaNutricional
+EncuestaNutricional --> Dia
+Dia --> Ingesta
+EncuestaNutricional --> Fechas
+EncuestaNutricional --> ImprimirFechas
+Ingesta --> Alimento
+
+@enduml
