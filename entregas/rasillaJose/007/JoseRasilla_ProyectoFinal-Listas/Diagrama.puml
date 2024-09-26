@@ -1,0 +1,56 @@
+@startuml Diagrama
+class Pacient {
+  - pacientName: String
+  - date: String
+  - survey: Survey
+  + createSurvey()
+  + enterIntakeData()
+  + printSurvey()
+}
+
+class Survey {
+  - daysList: JavaList<Day>
+  + addDay(Day day)
+}
+
+class Day {
+  - name: String
+  - meals: JavaList<Meal>
+  + addMeal(Meal meal)
+}
+
+class Meal {
+  - mealName: String
+  - intakes: JavaList<Intake>
+  + addIntake(Intake intake)
+}
+
+class Intake {
+  - intakeDescription: String
+}
+
+class JavaList<T> {
+  - firstNode: ListNode<T>
+}
+
+class ListNode<T> {
+  - data: T
+  - nextNode: ListNode<T>
+}
+
+class InputManager {
+  + promptString(String prompt): String
+  + promptInt(String prompt): int
+}
+
+class IntakeManager {
+  + enterIntakeData(Meal meal)
+}
+
+class PrintManager {
+  + printSurvey(Survey survey)
+  - printDays(ListNode<Day> currentDayNode)
+  - printMeals(ListNode<Meal> currentMealNode)
+  - printIntakes(ListNode<Intake> currentIntakeNode)
+}
+@enduml
