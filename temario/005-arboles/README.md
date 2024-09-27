@@ -13,7 +13,7 @@ Los árboles permiten representar datos de manera jerárquica, lo que es crucial
 
 ## ¿Qué?
 
-Un árbol es una estructura de datos no lineal que simula una jerarquía con relaciones padre-hijo.
+Un árbol es una estructura de datos **no lineal** que simula una jerarquía utilizando relaciones padre-hijo.
 
 Consiste en **nodos** conectados. Las características clave de un árbol incluyen:
 
@@ -48,7 +48,7 @@ Apoyar algoritmos más avanzados|Como aquellos utilizados en la compresión de d
 
 |||
 |-|-|
-Nodo raíz|Desde el nodo raíz se puede llegar a cualquier nodo del árbol progresando por las ramas y atravesando diferentes nodos. Esto irá conformando un camino.
+Raíz|Desde el nodo raíz se puede llegar a cualquier nodo del árbol progresando por las ramas y atravesando diferentes nodos. Esto irá conformando un **camino**.
 Padre-Hijo|La relación entre dos nodos separados de forma inmediata por una rama se denomina padre-hijo.
 ||En un árbol un padre puede tener varios hijos pero un hijo sólo puede tener un padre.
 Grado|Número de subárboles del nodo.
@@ -57,6 +57,8 @@ Peso|Número de hojas o nodos terminales de un árbol.
 Nivel de nodo|Número de nodos que le anteceden en el árbol.
 ||Ej.: el nivel de nodo raíz es 1.
 Profundidad|El mayor de los niveles de todos los nodos del árbol.
+Orden|Número máximo de hijos que puede tener un nodo.
+
 
 <div align=center>
 
@@ -79,9 +81,9 @@ Raiz|Hijos de **a**|Padre de d|Grado|Nivel
 
 |||
 |-|-|
-Inserción|Agregar nodos respetando las propiedades del árbol.
+[Recorrido](recorridos.md)|Visitar todos los nodos en un orden específico (preorden, inorden, postorden).
+[Inserción](inserciones.md)|Agregar nodos respetando las propiedades del árbol.
 Búsqueda|Encontrar un nodo específico.
-Recorrido|Visitar todos los nodos en un orden específico (preorden, inorden, postorden).
 Eliminación|Remover nodos manteniendo la estructura del árbol.
 
 ### Tipos de Árboles
@@ -92,3 +94,4 @@ Binarios|Cada nodo tiene como máximo dos hijos.
 Binarios de búsqueda (BST)|Un tipo de árbol binario donde cada nodo tiene un valor mayor que todos los nodos de su subárbol izquierdo y menor que los de su subárbol derecho.
 AVL|Árboles binarios de búsqueda balanceados.
 N-arios|Cada nodo puede tener más de dos hijos.
+
