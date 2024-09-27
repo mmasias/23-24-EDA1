@@ -1,0 +1,175 @@
++------------------+
+|     Alimento     |
++------------------+
+| - nombre: String |
+| - cantidad: double |
++------------------+
+| + getNombre(): String |
+| + getCantidad(): double |
+| + toString(): String |
++------------------+
++------------------+
+|     Arbol<T>     |
++------------------+
+| - raiz: NodoArbol<T> |
+| - comparador: Comparator<T> |
++------------------+
+| + insertar(T): void |
+| + buscar(T): T |
+| + recorrerInOrden(Consumer<T>): void |
++------------------+
++----------------------+
+|   DatosArbol<T>      |
++----------------------+
+| - arbol: Arbol<T>    |
++----------------------+
+| + insertar(T): void  |
+| + buscar(T): T       |
+| + recorrerInOrden(Consumer<T>): void |
++----------------------+
++--------------+
+|     Dia      |
++--------------+
+| - numeroDia: int |
+| - ingestas: DatosArbol<Ingesta> |
++--------------+
+| + agregarIngesta(Ingesta): void |
+| + buscarIngesta(String): Ingesta |
+| + getNumeroDia(): int |
+| + toString(): String |
++--------------+
++------------------+
+|    Encuesta      |
++------------------+
+| - fechaEncuesta: LocalDate |
+| - horaEncuesta: LocalTime |
+| - dias: DatosArbol<Dia> |
++------------------+
+| + setHoraEncuesta(LocalTime): void |
+| + getFechaEncuesta(): LocalDate |
+| + getHoraEncuesta(): LocalTime |
+| + agregarDia(Dia): void |
+| + buscarDia(int): Dia |
+| + toString(): String |
++------------------+
++--------------+
+|   Evento     |
++--------------+
+| - hora: LocalTime |
+| - descripcion: String |
++--------------+
+| + getHora(): LocalTime |
+| + getDescripcion(): String |
+| + setHora(LocalTime): void |
+| + setDescripcion(String): void |
++--------------+
++-------------------+
+|  GenericList<T>   |
++-------------------+
+| - first: GenericNode<T> |
++-------------------+
+| + size(): int |
+| + isEmpty(): boolean |
+| + insertFront(T): void |
+| + insertEnd(T): void |
+| + deleteFront(): void |
+| + getFirst(): GenericNode<T> |
+| + listAll(Class<T>): T[] |
++-------------------+
++-------------------+
+|  GenericNode<T>   |
++-------------------+
+| - value: T |
+| - next: GenericNode<T> |
++-------------------+
+| + getValue(): T |
+| + setValue(T): void |
+| + getNext(): GenericNode<T> |
+| + setNext(GenericNode<T>): void |
++-------------------+
++----------------+
+|    Gestion     |
++----------------+
+| - pacientes: Arbol<Paciente> |
++----------------+
+| + iniciarInterfazUsuario(): void |
+| + buscarOCrearPaciente(Scanner): Paciente |
+| + buscarOCrearEncuesta(Paciente, LocalDate): Encuesta |
+| + buscarOCrearDia(Encuesta, int): Dia |
+| + manejarIngestas(Scanner, Dia): void |
+| ... (otros métodos privados) ...
++----------------+
++----------------+
+|    Horario     |
++----------------+
+| - eventos: Arbol<Evento> |
++----------------+
+| + agregarEvento(Evento): void |
+| + buscarEvento(LocalTime): Evento |
+| + recorrerEventos(Consumer<Evento>): void |
++----------------+
++----------------+
+|    Ingesta     |
++----------------+
+| - tipoComida: String |
+| - horario: LocalTime |
+| - alimentos: DatosArbol<Alimento> |
++----------------+
+| + agregarAlimento(Alimento): void |
+| + getTipoComida(): String |
+| + getHorario(): LocalTime |
+| + listarAlimentos(): String |
+| + toString(): String |
++----------------+
++--------------+
+|     Main     |
++--------------+
++--------------+
+| + main(String[]): void |
++--------------+
++------------------+
+|  NodoArbol<T>    |
++------------------+
+| - valor: T |
+| - izquierdo: NodoArbol<T> |
+| - derecho: NodoArbol<T> |
++------------------+
+| + getValor(): T |
+| + setValor(T): void |
+| + getIzquierdo(): NodoArbol<T> |
+| + setIzquierdo(NodoArbol<T>): void |
+| + getDerecho(): NodoArbol<T> |
+| + setDerecho(NodoArbol<T>): void |
++------------------+
++------------------+
+|     Paciente     |
++------------------+
+| - nombre: String |
+| - peso: double   |
+| - altura: int    |
+| - edad: int      |
+| - sexo: char     |
+| - dni: String    |
+| - fechaAlta: LocalDate |
+| - encuestas: DatosArbol<Encuesta> |
++------------------+
+| + setNombre(String): void |
+| + getPeso(): double |
+| + setPeso(double): void |
+| + getAltura(): int |
+| ... (otros getters y setters) ...
+| + calcularIMC(): double |
+| + toString(): String |
++------------------+
++----------------+
+| PruebaArbol    |
++----------------+
++----------------+
+| + main(String[]): void |
++----------------+
++------------------+
+|  PruebaIngesta   |
++------------------+
++------------------+
+| + main(String[]): void |
++------------------+
