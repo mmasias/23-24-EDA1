@@ -1,8 +1,8 @@
-package listas.basica;
+package entregas.garciaLydia.reto003.ListaSimple;
 
 public class List {
-
     private Node first = null;
+    private String lastRemoved;
 
     public int size() {
         if (this.first == null) {
@@ -24,23 +24,13 @@ public class List {
     public void insertEnd(String value) {
         Node newNode = new Node(value);
         if (this.first == null)
-        this.first = newNode;
+            this.first = newNode;
         else {
             Node iterator = this.first;
             while (iterator.getNext() != null) {
                 iterator = iterator.getNext();
             }
             iterator.setNext(newNode);
-        }
-    }
-    
-    public void insertFront(String value) {
-        Node n = new Node(value);
-        if (this.first == null)
-            this.first = n;
-        else {
-            n.setNext(this.first);
-            this.first = n;
         }
     }
 
@@ -53,6 +43,7 @@ public class List {
                 iterator = iterator.getNext();
             }
             previous.setNext(null);
+            this.lastRemoved = iterator.getValue();
         }
     }
 
@@ -69,4 +60,11 @@ public class List {
         }
         return list;
     }
+
+    public String getLastRemoved() {
+        return this.lastRemoved;
+    }
 }
+
+
+

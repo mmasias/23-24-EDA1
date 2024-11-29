@@ -18,7 +18,7 @@ public class GenericList<T> {
     }
 
     public boolean isEmpty() {
-        return this.size() > 0 ? false : true;
+        return this.size() <= 0;
     }
 
     public void insertFront(T value) {
