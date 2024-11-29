@@ -8,15 +8,15 @@ class Ejemplo {
         viewLine(nephews);
         System.out.println("Esta vacia? " + nephews.isEmpty());
 
-        nephews.insert("Juanito");
-        nephews.insert("Pepito");
-        nephews.insert("Anita");
+        nephews.insertEnd("Juanito");
+        nephews.insertEnd("Pepito");
+        nephews.insertEnd("Anita");
 
         System.out.println("Esta vacia? " + nephews.isEmpty());
 
         viewLine(nephews);
 
-        nephews.insert("Luisito");
+        nephews.insertEnd("Luisito");
 
         System.out.println("Tamaño: " + nephews.size());
 
