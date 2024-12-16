@@ -1,0 +1,26 @@
+@startuml
+class Main{}
+class InterfazUsuario{}
+class EncuestaAlimentaria{}
+class Paciente{}
+class DiaAlimentacion{}
+class Ingesta{}
+class Alimento{}
+class Tree{}
+class TreeNode{}
+class List{}
+class Node{}
+
+Main ---> InterfazUsuario : usa
+Main ---> EncuestaAlimentaria : usa
+Paciente <--- EncuestaAlimentaria : usa 
+EncuestaAlimentaria ---> DiaAlimentacion : usa
+DiaAlimentacion ---> Ingesta : usa 
+Ingesta ---> Alimento : usa
+EncuestaAlimentaria ---> Tree: usa
+Paciente ---> Tree : usa
+DiaAlimentacion ---> Tree : usa
+Tree ...> TreeNode : tiene
+Ingesta --- List : usa
+List ... Node : tiene
+@enduml
