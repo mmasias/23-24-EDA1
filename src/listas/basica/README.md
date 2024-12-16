@@ -72,11 +72,11 @@ Respetando el modelo anteriormente planteado
 
 <div align=center>
 
-|Elemento|vFormal|vMugre|
-|-|-|-|
-Nodo|[Código](/src/listas/basica/vPython/Node_formal.py)|[Código](/src/listas/basica/vPython/Node_mugre.py)
-Lista|[Código](/src/listas/basica/vPython/List_formal.py)|[Código](/src/listas/basica/vPython/List_mugre.py)
-Ejemplo|[Código](/src/listas/basica/vPython/Ejemplo_formal.py)|[Código](/src/listas/basica/vPython/Ejemplo_mugre.py)
+|Elemento|vFormal|vMugre|vHiperformal
+|-|-|-|-|
+Nodo|[Código](/src/listas/basica/vPython/Node_formal.py)|[Código](/src/listas/basica/vPython/Node_mugre.py)|[Código](/src/listas/basica/vPython/Node_hiperformal.py)
+Lista|[Código](/src/listas/basica/vPython/List_formal.py)|[Código](/src/listas/basica/vPython/List_mugre.py)|[Código](/src/listas/basica/vPython/List_hiperformal.py)
+Ejemplo|[Código](/src/listas/basica/vPython/Ejemplo_formal.py)|[Código](/src/listas/basica/vPython/Ejemplo_mugre.py)|[Código](/src/listas/basica/vPython/Ejemplo_hiperformal.py)
 
 </div>
 
