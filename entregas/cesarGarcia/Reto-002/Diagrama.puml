@@ -1,0 +1,42 @@
+@startuml
+class Tabla {
+  - matriz: Celda[][]
+  - filas: int
+  - columnas: int
+  - filaActual: int
+  - columnaActual: int
+  + Tabla(filas: int, columnas: int)
+  + inicializarMatriz(): void
+  + imprimirHoja(): void
+  + getPosicionActual(): String
+  + moverArriba(): void
+  + moverAbajo(): void
+  + moverIzquierda(): void
+  + moverDerecha(): void
+  + agregarTexto(texto: String): void
+}
+
+class Movimiento {
+  - scanner: Scanner
+  + imprimirOpciones(): void
+  + moverse(tabla: Tabla, direccion: String, texto: String): void
+  + leerDireccion(): String
+  + leerTexto(): String
+}
+
+class Celda {
+  - contenido: String
+  + Celda()
+  + getContenido(): String
+  + setContenido(contenido: String): void
+}
+
+class Ejecutar {
+  + main(args: String[]): void
+}
+
+Tabla "1" --* "many" Celda : contiene
+Movimiento "1" --* "1" Tabla : interactúa con
+Ejecutar "1" --* "1" Tabla : utiliza
+Ejecutar "1" --* "1" Movimiento : utiliza
+@enduml
